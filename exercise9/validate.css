@@ -1,0 +1,56 @@
+body
+{
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center {
+    display:inline-block;
+    position: absolute;
+    left:0;
+    right:0;
+}
+.heading {
+        background-color: green;
+        display:block;
+        width: 600px;   
+        text-align: center;
+}
+
+.label{
+        font-family: tahoma;
+        font-size: 14px;
+        color: black;
+        display: inline-block;
+        width: 200px;
+        clear: left;
+        padding-right: 10px
+        /*margin-right:30px;*/
+        text-align: right;
+}
+
+.form
+{
+    /*position: relative;*/
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+}
+
+
+.formbox{
+    background-color: #ececec;
+    /*border-color: #bcbcbc;*/
+    width: 600px;
+/*    padding-top: 20px;
+    padding-bottom: 20px;*/
+
+}
+.input {
+        border-color: green;
+}
+.aboutme {
+        width:400px;
+        height: 200px;
+        padding-left: 50px
+}

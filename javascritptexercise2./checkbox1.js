@@ -2,7 +2,7 @@ function CheckBoxes() {
 
 }
 
-CheckBoxes.prototype.SetAllCheckBoxes = function(FormName, FieldName, CheckValue){
+CheckBoxes.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue){
 
   if (!document.forms[FormName]) {
     return;

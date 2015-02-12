@@ -1,18 +1,30 @@
-function Regex() {
-
+function Numeric() {
+  var number = document.getElementById("number");
+  var result = document.getElementById("result");
+  var submit = document.getElementById("submit");
 }
 
-Regex.prototype.validate = function() {
-	var number = document.getElementById("number");
-	var result = document.getElementById("result");
-	var submit = document.getElementById("submit");
-	var regex = /(^\d+)|((^\d+).(^\d+))$/;
+Numeric.prototype.validate = function() {
+  var regex = /((^(\-|\+)?\d+)|(^(\-|\+)?\d+).(\d+))$/;
 	var match = regex.test(number.value);
-	result.value = match;
-	if ((result).value == false) {
-		submit.onclick="return false"
-	}
-
+	return match
 }
 
-var check = new Regex();
+Numeric.prototype.print = function() {
+  match = this.validate();
+  result.value = match;
+}
+Numeric.prototype.checkButton = function(event) {
+  match = this.validate();
+  if(!match) {
+    submit.preventDefault();
+  }
+}
+
+Numeric.prototype.doAll= function() {
+  this.validate();
+  this.print();
+  this.checkButton();
+}
+
+var check = new Numeric();

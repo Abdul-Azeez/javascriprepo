@@ -1,43 +1,36 @@
 function User() {
-  this.firstname = prompt("Please enter your first name", "");
-  this.lastname = prompt("Please enter ur last name","");
-
-}
-
-
-
-User.prototype.collectUser = function(firstname, lastname) {
-  firstname = this.firstname;
-  lastname = this.lastname;
-
+  
 }
 
 User.prototype.validate = function(e) {
-                    switch(e && e.trim()) {
-                        case "":
-                        case 0:
-                        case "0":
-                        case null:
-                        case false:
-                        case typeof this == "undefined":
-                            return true;
-                                default : return false;
-                    }
-                }
+  switch(e && e.trim()) {
+    case "":
+    case 0:
+    case "0":
+    case null:
+    case false:
+    case typeof this == "undefined":
+    return true;
+    default : return false;
+    }  
+}
 
 User.prototype.print = function () {
 
-  if (this.validate(this.firstname) == true) { 
-    alert("firstname doesn't have to be empty")
-      }
-  if (this.validate(this.lastname) == true) {
-    alert("lastname doesn't have to be empty")
+  do {
+      // alert("firstname doesn't have to be empty")
+      this.firstname= prompt("Please enter your first name", "");
   }
+  while (this.validate(this.firstname) == true)
 
-  else {
-     document.getElementById("demo").innerHTML =
-        "Hello " + this.firstname +" "+ this.lastname;
+  do {
+      // alert("lastname doesn't have to be empty")
+      this.lastname= prompt("Please enter your lastname name", "");
   }
+  while(this.validate(this.lastname) == true)
+
+  document.getElementById("demo").innerHTML =
+  "Hello " + this.firstname +" "+ this.lastname;
 
 }
 

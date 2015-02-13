@@ -1,32 +1,24 @@
 <html>
-<head>
-<script type="text/javascript" src="checkbox1.js"></script>
-</head>
-
-<body>
-  <form method="GET" action="" name="myForm" onsubmit="return false;">
-  
-    <label for="myCheckbox1">
-    <input type="checkbox" name="myCheckbox" value="1" id="red">
-    RED</label><br>
-    
-    <label for="myCheckbox2"><input type="checkbox" name="myCheckbox" value="2" id="green">
-    GREEN </label><br>
-
-    <label for="myCheckbox3"><input type="checkbox" name="myCheckbox" value="3" id="yellow">
-    YELLOW</label><br>
-
-    <label for="myCheckbox4"><input type="checkbox" name="myCheckbox" value="3" id="white">
-    WHITE </label><br>
-
-    <label for="myCheckbox5"><input type="checkbox" name="myCheckbox" value="3" id="black">
-    BLACK</label>
-    <br>
-    
-    <input type ="button" id ="button" value = "CHECK ALL" onclick = "setOfColours.setAllCheckBoxes('myForm','myCheckbox', true)">
-    <input type ="button" id ="button1"  value="CHECK NONE" onclick = "setOfColours.setAllCheckBoxes('myForm','myCheckbox', false)">
-
-  </form>
-
-</body>
+  <head>
+    <script type="text/javascript" src="checkbox1.js"></script>
+  </head>
+  <body>
+    <form method="GET" action="" name="myForm" onsubmit="return false;">
+      <label for="myCheckbox1">
+      <input type="checkbox" name="myCheckbox" value="1" id="red">
+      RED</label><br>
+      <label for="myCheckbox2"><input type="checkbox" name="myCheckbox" value="2" id="green">
+      GREEN </label><br>
+      <label for="myCheckbox3"><input type="checkbox" name="myCheckbox" value="3" id="yellow">
+      YELLOW</label><br>
+      <label for="myCheckbox4"><input type="checkbox" name="myCheckbox" value="3" id="white">
+      WHITE </label><br>
+      <label for="myCheckbox5"><input type="checkbox" name="myCheckbox" value="3" id="black">
+      BLACK</label>
+      <br>
+      <input type ="button" id ="button" value = "CHECK ALL" onclick = "setOfColours.setAllCheckBoxes('myForm','myCheckbox', true)">
+      <input type ="button" id ="button1"  value="CHECK NONE" onclick = "setOfColours.setAllCheckBoxes('myForm','myCheckbox', false)">
+    </form>
+  </body>
 </html>
+

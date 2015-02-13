@@ -2,7 +2,7 @@ function Colour() {
 
 }
 
-Colour.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue){
+Colour.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue) {
 
   if (!document.forms[FormName]) {
     return;

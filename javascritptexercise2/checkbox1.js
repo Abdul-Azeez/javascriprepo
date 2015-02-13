@@ -1,8 +1,8 @@
-function CheckBoxes() {
+function Colour() {
 
 }
 
-CheckBoxes.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue){
+Colour.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue){
 
   if (!document.forms[FormName]) {
     return;
@@ -23,4 +23,4 @@ CheckBoxes.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue
     }
   }
 
-var objectName = new CheckBoxes();
+var setOfColours = new Colour();

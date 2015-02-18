@@ -1,0 +1,16 @@
+ body
+  {
+    height: 100px;
+  }
+  #Container
+  {
+    height:100px;
+    border: 2px solid blue;
+    overflow:scroll;
+  }
+  #colorTick, #moviesTick, #drinksTick, #bikesTick
+  {
+    margin-left:20px;
+    margin-top:15px;
+    display:none;
+  }

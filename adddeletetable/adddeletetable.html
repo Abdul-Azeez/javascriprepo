@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Add Delete and Edit Tables.</title>
+    <link href="adddeletetable.css"  type ="css/text">
+    <script type="text/javascript" src= "adddeletetable.js"></script>
+    </script>
+  </head>
+  <body>
+    <table border='1' cellpadding='10px' id='tableView'>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+      </tr>
+      <tr id="row1">
+        <td><span id='name1'>Gbenga.</span></td>
+        <td><span id='email1'>isiaq@dealdey.com</span></td>
+        <td><span id='editSave1'><span class='pointer' onclick='Table1.editRow(1);'>Edit</span></span> / <span class='pointer' onclick='Table1.deleteRow(1);'>Delete</span></td>
+      </tr>
+    </table>
+    <input type='button' onclick='Table1.addRow();' value='Add New Row'>
+  </body>
+</html>
+

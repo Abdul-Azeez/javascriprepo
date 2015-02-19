@@ -11,11 +11,6 @@ Numeric.prototype.validate = function() {
 	return match
 }
 
-// Numeric.prototype.print = function() {
-//   match = this.validate();
-//   result.value = match;
-// }
-
 Numeric.prototype.checkButton = function() {
   match = this.validate();
   if(match) {
@@ -28,9 +23,9 @@ Numeric.prototype.checkButton = function() {
 Numeric.prototype.doAll= function() {
   this.validate();
   this.checkButton();
-  this.print();
  }
 var check = new Numeric();
 var submit = document.getElementById("submit");
-submit.addEventListener("click", check.doAll );
+submit.addEventListener("submit", function() {check.doAll();} );
+ 
 

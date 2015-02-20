@@ -1,8 +1,8 @@
 <html>
   <head>
     <title>Moving List Javascript track</title>
+  </head>
   <body>
-    <script language="Javascript" src="fulltable.js"></script>
     <form name="Countries">
       <table border="0" cellpadding="3" cellspacing="0">
         <tr>
@@ -18,9 +18,9 @@
             </select>
           </td>
           <td align="center" valign="middle">
-            <input type="Button" id ="button1" value="Add >>" style="width:100px" onClick="Row1.SelectMoveRows(document.Countries.SetofcountriesA,document.Countries.SetofcountriesB)"><br>
+            <input type="Button" id ="button1" value="Add >>" style="width:100px" ><br>
             <br>
-            <input type="Button" id="button2" value="<< Remove" id="button2" style="width:100px" onClick="Row2.SelectMoveRows(document.Countries.SetofcountriesB,document.Countries.SetofcountriesA)">
+            <input type="Button" id="button2" value="<< Remove" style="width:100px">
           </td>
           <td>
             <select name="SetofcountriesB" size="9" MULTIPLE>
@@ -31,6 +31,7 @@
         </tr>
       </table>
     </form>
+          <script src="fulltable.js"></script>
   </body>
 </html>
 

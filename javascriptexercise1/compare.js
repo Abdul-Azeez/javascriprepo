@@ -24,10 +24,7 @@ User.prototype.compare = function(user) {
   var secondusername = this.validateName(user.name)
   var firstuserAge = this.validateAge(user.age);
   var seconduserAge = this.validateAge(user.age);
-  console.log(firstusername);
-  console.log(secondusername);
   if ((firstuserAge && seconduserAge) && (firstusername && secondusername)==true) {
-    console.log(this.age);
     if (this.age > user.age) {
       alert(this.name +" is older than "+user.name)
     } else if (this.age == user.age) {
@@ -36,8 +33,8 @@ User.prototype.compare = function(user) {
       alert(user.name+" is older than "+ this.name) 
     }
   } 
-
 }
+
 var user1 = new User("", "0027")
 var user2 = new User("abu", "78")
 var user3= new User("osifo", 35)

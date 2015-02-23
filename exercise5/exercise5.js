@@ -1,33 +1,31 @@
-function User() {
-
+function User(firstname, lastname) {
+  this.firstname = prompt("Please enter your first name", "")
+  this.lastname = prompt("Please enter your lastname name", "")
 }
 
 User.prototype.validate = function(e) {
   switch(e && e.trim()) {
     case "":
-    case 0:
-    case "0":
     case null:
     return true;
     default : return false;
     }  
 }
 
+
 User.prototype.print = function () {
 
-  do {
-      this.firstname= prompt("Please enter your first name", "");
+  if (this.validate(this.firstname)) {
+    (this.firstname= prompt("Please enter your first name", ""));
+    
+     preventDefault();
   }
-  while (this.validate(this.firstname) == true)
-
-  do {
+  if (this.validate(this.lastname)) {
       this.lastname= prompt("Please enter your lastname name", "");
-  }
-  while(this.validate(this.lastname) == true)
-
+      preventDefault();
+    }
   document.getElementById("demo").innerHTML =
   "Hello " + this.firstname +" "+ this.lastname;
-
 }
 
 var user1 = new User()

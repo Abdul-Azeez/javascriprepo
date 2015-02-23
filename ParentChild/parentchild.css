@@ -8,7 +8,7 @@
     border: 2px solid blue;
     overflow:scroll;
   }
-  #colorTick, #moviesTick, #drinksTick, #bikesTick
+  .colorTick, .moviesTick, .drinksTick, .bikesTick
   {
     margin-left:20px;
     margin-top:15px;

@@ -3,13 +3,14 @@
 
   Parent1.prototype.parentTick= function(box)
   { 
-    var elements = document.getElementById(box+'Tick');
+    var boxs ="." + box + "Tick";
+    var elements = document.querySelector(boxs);
     var tChid = document.getElementById(box+'All');
     if(tChid.checked)
     {
       var number = Number (10)
       elements.style.display = 'block';
-      document.getElementById("Container").scrollTop = document.getElementById(box+"Container").offsetTop - number;
+      document.getElementById("Container").scrollTop = document.getElementById(box+"Container").offsetTop - 10;
     }
     else
     {

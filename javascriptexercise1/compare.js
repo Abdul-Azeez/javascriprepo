@@ -13,7 +13,7 @@ User.prototype.validateAge = function(age) {
   return true;
 }
 User.prototype.validateName = function(name) {
-  if ((name == "" || name == " " || name.length == 0 )) {
+  if ((name.trim().length == 0 )) {
     alert("Please Check your name"); 
     return false
     } 
@@ -24,7 +24,7 @@ User.prototype.compare = function(user) {
   var secondusername = this.validateName(user.name)
   var firstuserAge = this.validateAge(user.age);
   var seconduserAge = this.validateAge(user.age);
-  if ((firstuserAge && seconduserAge) && (firstusername && secondusername)==true) {
+  if ((firstuserAge && seconduserAge) && (firstusername && secondusername)) {
     if (this.age > user.age) {
       alert(this.name +" is older than "+user.name)
     } else if (this.age == user.age) {
@@ -35,7 +35,7 @@ User.prototype.compare = function(user) {
   } 
 }
 
-var user1 = new User("", "0027")
+var user1 = new User("gbenga", "0027")
 var user2 = new User("abu", "78")
 var user3= new User("osifo", 35)
 var user4 = new User("abubakar", 27)

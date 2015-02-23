@@ -4,10 +4,10 @@
   </head>
   <body>
     <form name="Countries">
-      <table border="0" cellpadding="3" cellspacing="0">
+      <table border="0" cellpadding="3" cellspacing="0" style="table-layout: fixed" width=300px class="countries"  >
         <tr>
-          <td>
-            <select name="SetofcountriesA" size="9" MULTIPLE>
+          <td style="width:100px"   >
+            <select name="SetofcountriesA" size="9" MULTIPLE style="min-width:100px" >
               <option value="2">Nigeria</option>
               <option value="4">Ghana</option>
               <option value="5">Cameroun</option>
@@ -17,13 +17,13 @@
               <option value="9">Libya</option>
             </select>
           </td>
-          <td align="center" valign="middle">
-            <input type="Button" id ="button1" value="Add >>" style="width:100px" ><br>
+          <td align="center" valign="middle" style="width:100px" >
+            <input type="Button" id ="button1" value="Add >>" ><br>
             <br>
-            <input type="Button" id="button2" value="<< Remove" style="width:100px">
+            <input type="Button" id="button2" value="<< Remove">
           </td>
-          <td>
-            <select name="SetofcountriesB" size="9" MULTIPLE>
+          <td style="width:100px" >
+            <select name="SetofcountriesB" size="9" MULTIPLE style="min-width:100px"> 
               <option value="1">Brazil</option>
               <option value="3">Portugal</option>
             </select>
@@ -31,7 +31,7 @@
         </tr>
       </table>
     </form>
-          <script src="fulltable.js"></script>
+      <script src="fulltable.js"></script>
   </body>
 </html>
 

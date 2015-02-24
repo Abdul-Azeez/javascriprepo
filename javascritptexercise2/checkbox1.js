@@ -12,7 +12,7 @@ Colour.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue) {
     return;
   }
   var countCheckBoxes = objCheckBoxes.length;
-  if (!countCheckBoxes) {
+  if (!objCheckBoxes) {
     objCheckBoxes.checked = CheckValue;
   }
   else
@@ -24,3 +24,7 @@ Colour.prototype.setAllCheckBoxes = function(FormName, FieldName, CheckValue) {
   }
 
 var setOfColours = new Colour();
+var button = document.getElementById("button");
+var button1 = document.getElementById("button1");
+button.addEventListener("click",function(){ setOfColours.setAllCheckBoxes('myForm','myCheckbox', true)})
+button1.addEventListener("click", function() { setOfColours.setAllCheckBoxes('myForm','myCheckbox', false)})

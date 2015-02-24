@@ -19,12 +19,21 @@ User.prototype.validateName = function(name) {
     } 
   return true;
 }
-User.prototype.compare = function(user) {
+User.prototype.validateinput = function(user) {
   var firstusername = this.validateName(this.name);
-  var secondusername = this.validateName(user.name)
+  var secondusername = this.validateName(user.name);
   var firstuserAge = this.validateAge(user.age);
   var seconduserAge = this.validateAge(user.age);
   if ((firstuserAge && seconduserAge) && (firstusername && secondusername)) {
+    return true;
+  } else {
+    return false;
+  }
+
+}
+
+User.prototype.compare = function(user) {
+  if (this.validateinput(user)) {
     if (this.age > user.age) {
       alert(this.name +" is older than "+user.name)
     } else if (this.age == user.age) {

@@ -1,31 +1,25 @@
 function Numeric() {
-  var number = document.getElementById("number");
-  var result = document.getElementById("result");
-  var submit = document.getElementById("submit");
 }
 
-Numeric.prototype.validate = function() {
-  // var regex = /((^(\-|\+)?\d+)|(^(\-|\+)?\d+).(\d+))$/;
-  var regex = /^(-|\+)?[\d]+[.]?[\d]+$/;
-	var match = regex.test(number.value);
-	return match
+Numeric.prototype.validate = function(number) {
+  var number = document.getElementById("number");
+  var regex = /((^(\-|\+)?\d+)|(^(\-|\+)?\d+).(\d+))$/;
+	var answer = regex.test(number.value);
+	return answer;
 }
 
 Numeric.prototype.checkButton = function() {
-  match = this.validate();
+  var result = document.getElementById("result");
+  match = this.validate(number);
   if(match) {
-    result.value = match
-  } else { 
-    submit.preventDefault()
+    result.value = match;
+  } else {
+    result.value = match;
+    return false;
   }
 }
 
-Numeric.prototype.doAll= function() {
-  this.validate();
-  this.checkButton();
- }
-var check = new Numeric();
 var submit = document.getElementById("submit");
-submit.addEventListener("submit", function() {check.doAll();} );
- 
+submit.addEventListener("click", function() { check.checkButton()}, true );
+var check = new Numeric();
 

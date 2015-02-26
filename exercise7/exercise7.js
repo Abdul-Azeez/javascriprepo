@@ -3,7 +3,7 @@ function Numeric() {
 
 Numeric.prototype.validate = function(number) {
   var number = document.getElementById("number");
-  var regex = /((^(\-|\+)?\d+)|(^(\-|\+)?\d+).(\d+))$/;
+  var regex = /((^(\-|\+)?\d+)|(^(\-|\+)?\d+)$.(\d+))$/;
 	var answer = regex.test(number.value);
 	return answer;
 }

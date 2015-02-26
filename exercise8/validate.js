@@ -1,60 +1,34 @@
-function Form(){
+function Form() {
 
-    
-
-}
-
-Form.prototype.validate = function(e) {
-    switch(e && e.trim()) {
-        case "":
-        case 0:
-        case "0":
-        case null:
-        case false:
-        case typeof this == "undefined":
-            return true;
-                default : return false;
-    }
 }
 
 Form.prototype.validateLenght = function (lenght1) {
-    this.lenght1 = lenght1;
-    if ((lenght1.length) < 50) {
-        alert("String lenght of the aboutme field must not be less than 50.")
-    }
+  this.lenght1 = lenght1;
+  if ((lenght1.length) < 50) {
+    alert("String lenght of the aboutme field must not be less than 50.")
+  }
 }
 
-Form.prototype.print= function()
-{
-    loginid = document.getElementById("loginid");
-    email = document.getElementById("email");
-    name = document.getElementById("name");
-    homepage = document.getElementById("homepage");
-    aboutme = document.getElementById("aboutme");
-    notify = document.getElementById("notify");
-
-    if (this.validate(loginid.value)) {
-        alert("Login doesn't have to be empty")
+Form.prototype.validateAll = function(elements) {
+  var elements = document.forms.elements;
+  for (var i = 0; i < elements.length - 1; i++) { 
+    if (forms.elements[i].value == "" || forms.elements[i].value== null) {
+      if(forms.elements[i].id !== "timezone" && forms.elements[i].id !== "notify") {
+        alert(forms.elements[i].id+ "  can't be empty");
+      }  
+      if (forms.elements[i].id == "notify") {
+        alert("Please click the checkbox")
+      }
+      if (forms.elements[i].id == "aboutme") {
+        var aboutme = document.getElementById("aboutme");
+        console.log(aboutme)
+        this.validateLenght("aboutme");
+      }
     }
-    if (this.validate(email.value)) {
-        alert("Email doesn't have to be empty")
-    }
-    if (this.validate(name.value)) {
-        alert("Name doesn't have to be empty")
-    }
-    if (this.validate(homepage.value)) {
-        alert("Homepage doesn't have to be empty")
-    }
-    if (this.validate(aboutme.value)) {
-        alert("The about me field doesn't have to be empty")
-    }
-    if (this.validateLenght(aboutme.value)) {
-        alert(" The  string lenght of the about me field must be greater than 50")
-    }
-    if (!notify.checked) {
-        alert("The notify field has to be ticked.")
-    }
+  }
 }
 
 var form1 = new Form()
+var submit = document.getElementById("submit");
+submit.addEventListener("click", function() { form1.validateAll()}, true );
 // form1.print()

@@ -15,9 +15,7 @@ Form.prototype.validateemail = function(email) {
     var match = regex.test(email.value);
     if (match == false) {
         alert("Please check your email")
-    }
-    
-    
+    }    
 }
 
 var url = document.getElementById("homepage")

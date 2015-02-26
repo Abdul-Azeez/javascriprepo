@@ -1,21 +1,6 @@
-function Form(loginid,email,name,homepage,aboutme){
-
-	
-
+function Form() {
+  
 }
-
-Form.prototype.validate = function(e) {
-                    switch(e && e.trim()) {
-                        case "":
-                        case 0:
-                        case "0":
-                        case null:
-                        case false:
-                        case typeof this == "undefined":
-                            return true;
-                                default : return false;
-                    }
-                }
 
 Form.prototype.validateLenght = function (lenght1) {
 	this.lenght1 = lenght1;
@@ -24,71 +9,50 @@ Form.prototype.validateLenght = function (lenght1) {
 	}
 }
 
-
 Form.prototype.validateEmail = function(email) {
-    var email = document.getElementById("email")
-    var regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/
-    var match = regex.test(email.value);
-    if (match == false) {
-        alert("Please check your email")
-    }
-    
-    
+  var email = document.getElementById("email")
+  var regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/
+  var match = regex.test(email.value);
+  if (match == false) {
+      alert("Please use the proper email format")
+  }
 }
 
-var url = document.getElementById("homepage")
 Form.prototype.validateUrl = function(homepage) {
-    var url = document.getElementById("homepage")
-    var regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
-    var match = regex.test(url.value);
-    if (match==false) {
-      alert("please check the url of your homepage")
-    }
-    
+  var url = document.getElementById("homepage")
+  var regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+  var match = regex.test(url.value);
+  if (match==false) {
+    alert("Please use proper Url format")
+  }
 }
 
+Form.prototype.validateAll = function(elements) {
+  var elements = document.forms.elements;
+  for (var i = 0; i < elements.length - 1; i++) { 
+    if (forms.elements[i].value == "" || forms.elements[i].value== null) {
+      if(forms.elements[i].id !== "timezone" && forms.elements[i].id !== "notify") {
+        alert(forms.elements[i].id+ "  can't be empty");
+      }  
+      if (forms.elements[i].id == "notify") {
+        alert("Please click the checkbox")
+      }
+      if (forms.elements[i].id == "aboutme") {
+        console.log(aboutme)
+        this.validateLenght("aboutme");
+      }
+      if (forms.elements[i].id == "email") {
+        this.validateEmail("email")
+      }
+      if (forms.elements[i].id == "url") {
+        this.validateUrl("url")
+      }
 
-
-Form.prototype.print= function()
-{
-	loginid = document.getElementById("loginid");
-	alert(loginid);
-	email = document.getElementById("email");
-	name = document.getElementById("name");
-	homepage = document.getElementById("homepage");
-	aboutme = document.getElementById("aboutme");
-	notify = document.getElementById("notify");
-
-	if (this.validate(loginid.value)) {
-		alert("Login doesn't have to be empty")
-	}
-	if (this.validate(email.value)) {
-		alert("email doesn't have to be empty")
-	}
-	if (this.validate(name.value)) {
-		alert("name doesn't have to be empty")
-	}
-	if (this.validate(homepage.value)) {
-		alert("homepage doesn't have to be empty")
-	}
-	if (this.validate(aboutme.value)) {
-		alert("The about me field doesn't have to be empty")
-	}
-	if (this.validateLenght(aboutme.value)) {
-		alert(" The  string lenght of the about me field must be greater than 50")
-	}
-	if (!notify.checked) {
-		alert("The notify field has to be ticked.")
-	}
-
-	if (this.validateEmail(email)== false) {
-        alert("Please check your email address")
     }
-
-    if (this.validateUrl(aboutme)==false) {
-        alert("please check the url of your homepage")
-    }
+  }
 }
-
 var form1 = new Form()
+var form1 = new Form()
+var submit = document.getElementById("submit");
+submit.addEventListener("click", function() { form1.validateAll()}, true );
 // form1.print()

@@ -1,55 +1,38 @@
 <html>
-<head>
-<link href ="validate.css" rel = "stylesheet" type="text/css">
-<script type="text/javascript" src= "validate.js"></script>
-</head>
-
-<body>
-<div class= "form">
-<label class="heading">Registration:</label>
-
-  <form action="" class="formbox" id="formbox">
-    <label class="label" for="loginid"> Registration Login Id:</label>
-    <input type="text" name="login" class="input" value="" id ="loginid" class="input">
-    <br>
-    <br>
-
-
-    <label class="label" for="email">Email Address:</label>
-    <input type="email" name="Email Address" value=""class="input" id ="email" class="input">
-    <br>
-    <br>
-
-    <label class="label" for="name">Name:</label>
-    <input type="text" name="name"class="input" id ="name" class="input"><br><br>
-
-    <label class="label" >Time Zone</label><select>             
-        <option value="0">GMT</option>
-        <option value="1">GMT + 1</option>
-        <option value="2">GMT + 2</option>
-    </select><br><br>
-
-    <label class="label" for="homepage">Home Page:</label>
-    <input type ="text" name ="" value="" class="input" id ="homepage"class="input"/>
-    <br>
-    <br>
-   
-
-    <label class="label" for="aboutme">About Me</label><br>
-    <textarea id ="aboutme" class="input aboutme"></textarea>
-    <br>
-    <br>
-
-    <input type ="checkbox" name ="checkedbox" value="" id ="notify">
-    <label  for ="notify"> You will be sent an email when someone post comment to your blog or album</label>
-
-    <h4> Yor password will be mailed to you</h4>
-    <input type="submit" value="GO" onclick="form1.print()">
-
-                           
-
-</form>
-</div>
-</body>
-
+  <head>
+    <link href ="validate.css" rel = "stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class= "form">
+      <label class="heading">Registration:</label>
+      <form action="" class="formbox" id="formbox" name ="forms">
+        <label class="label" for="loginid"> Registration Login Id:</label>
+        <input type="text" name="login" class="input" value="" id ="loginid" class="input">
+        <br><br>
+        <label class="label" for="email">Email Address:</label>
+        <input type="email" name="email" value=""class="input" id ="email" class="input">
+        <br><br>
+        <label class="label" for="name">Name:</label>
+        <input type="text" name="name"class="input" id ="name" class="input"><br><br>
+        <label class="label" >Time Zone</label>
+        <select id ="timezone">
+          <option value="0">GMT</option>
+          <option value="1">GMT + 1</option>
+          <option value="2">GMT + 2</option>
+        </select>
+        <br><br>
+        <label class="label" for="homepage">Home Page:</label>
+        <input type ="text" name ="homepage" value="" class="input" id ="homepage"class="input"/>
+        <br><br>
+        <label class="label" for="aboutme">About Me</label><br>
+        <textarea id ="aboutme" class="input" name="aboutme"></textarea>
+        <br><br>
+        <input type ="checkbox" name ="checkedbox" value="" id ="notify">
+        <label  for ="notify"> You will be sent an email when someone post comment to your blog or album</label>
+        <h4> Your password will be mailed to you</h4>
+        <input type="submit" value="GO" id="submit" >
+      </form>
+    </div>
+  </body>
+    <script type="text/javascript" src= "validate.js"></script>
 </html>

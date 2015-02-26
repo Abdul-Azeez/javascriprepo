@@ -17,26 +17,12 @@ CheckBox.prototype.chkControl = function() {
         document.getElementById(days[3]).checked = false;
       } 
     } else {
-       total--;
-  }
+      total--;
+    } 
      
-      // days.pop(day);
   } 
 }
 
-CheckBox.prototype.noCheckBox= function(FormName, FieldName)
-{
-  var nonevalue = document.getElementById("none")
-  nonevalue.checked = false;
-  if(!document.forms[FormName]) {
-    return;
-  }
-  var objCheckBoxes = document.forms[FormName].elements[FieldName];
-  if(!objCheckBoxes) {
-    return;
-  }
- var countCheckBoxes = objCheckBoxes.length;
-}
 // // Unchecked all the documents when none is clicked//
 CheckBox.prototype.uncheckAll = function () {
   if(document.getElementById('none').checked == true) {
@@ -49,7 +35,6 @@ CheckBox.prototype.uncheckAll = function () {
 }
 
 CheckBox.prototype.checkAll = function() {
-  this.noCheckBox('myForm', 'myCheckbox');
   this.chkControl();
 }
 var checkBox1 = new CheckBox();

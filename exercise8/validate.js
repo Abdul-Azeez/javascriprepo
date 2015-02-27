@@ -1,5 +1,4 @@
 function Form() {
-
 }
 
 Form.prototype.validateLenght = function (lenght1) {
@@ -17,18 +16,28 @@ Form.prototype.validateAll = function(elements) {
         alert(forms.elements[i].id+ "  can't be empty");
       }  
       if (forms.elements[i].id == "notify") {
-        alert("Please click the checkbox")
+        this.validateCheckbox();
       }
       if (forms.elements[i].id == "aboutme") {
-        var aboutme = document.getElementById("aboutme");
-        console.log(aboutme)
-        this.validateLenght("aboutme");
+        this.validateAboutme();
       }
     }
   }
 }
 
+Form.prototype.validateCheckbox = function() {
+  var notify = document.getElementById("notify")
+  if (notify.checked==false ) {
+    alert("Please click the checkbox")
+  }
+}
+
+Form.prototype.validateAboutme = function() {
+  var aboutme = document.getElementById("aboutme");
+  this.validateLenght("aboutme");
+}
+
 var form1 = new Form()
-var submit = document.getElementById("submit");
-submit.addEventListener("click", function() { form1.validateAll()}, true );
+var formbox = document.getElementById("formbox");
+formbox.addEventListener("submit", function() { form1.validateAll()}, true );
 // form1.print()

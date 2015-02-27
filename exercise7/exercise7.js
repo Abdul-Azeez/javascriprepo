@@ -11,10 +11,8 @@ Numeric.prototype.validate = function(number) {
 Numeric.prototype.checkButton = function() {
   var result = document.getElementById("result");
   match = this.validate(number);
-  if(match) {
-    result.value = match;
-  } else {
-    result.value = match;
+  result.value = match;
+  if(!match) {
     return false;
   }
 }

@@ -1,4 +1,6 @@
 function Form() {
+  var formbox = document.getElementById("formbox");
+  formbox.addEventListener("submit", function() { form1.validateAll()}, true );
 }
 
 Form.prototype.validateLenght = function (lenght1) {
@@ -14,12 +16,15 @@ Form.prototype.validateAll = function(elements) {
     if (forms.elements[i].value == "" || forms.elements[i].value== null) {
       if(forms.elements[i].id !== "timezone" && forms.elements[i].id !== "notify") {
         alert(forms.elements[i].id+ "  can't be empty");
+        break;
       }  
       if (forms.elements[i].id == "notify") {
         this.validateCheckbox();
+        break;
       }
       if (forms.elements[i].id == "aboutme") {
         this.validateAboutme();
+        break;
       }
     }
   }
@@ -38,6 +43,6 @@ Form.prototype.validateAboutme = function() {
 }
 
 var form1 = new Form()
-var formbox = document.getElementById("formbox");
-formbox.addEventListener("submit", function() { form1.validateAll()}, true );
+
+
 // form1.print()

@@ -33,18 +33,23 @@ Form.prototype.validateAll = function(elements) {
     if (forms.elements[i].value == "" || forms.elements[i].value== null) {
       if(forms.elements[i].id !== "timezone" && forms.elements[i].id !== "notify") {
         alert(forms.elements[i].id+ "  can't be empty");
+        break;
       }  
       if (forms.elements[i].id == "notify") {
         this.validateCheckbox();
+        break;
       }
       if (forms.elements[i].id == "aboutme") {
         this.validateAboutme();
+        break;
       }
       if (forms.elements[i].id == "email") {
         this.validateEmail("email")
+        break;
       }
       if (forms.elements[i].id == "url") {
         this.validateUrl("url")
+        break;
       }
     }
   }

@@ -1,6 +1,4 @@
 function User() {
-  this.firstname = ""
-  this.lastname = ""
 }
 
 User.prototype.validate = function(e) {
@@ -11,7 +9,6 @@ User.prototype.validate = function(e) {
     default : return false;
   }  
 }
-
 
 User.prototype.print = function () {
   for (var i = 0; i<names.length; i++) {
@@ -24,6 +21,7 @@ User.prototype.print = function () {
       }
     } else {
       alert(names[i]+ "can't be empty")
+      break;
     }
   }
 }

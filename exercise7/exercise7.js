@@ -1,15 +1,17 @@
 function Numeric() {
+  var number = document.getElementById("number");
+  var submit = document.getElementById("submit");
+  var result = document.getElementById("result");
+  submit.addEventListener("click", function() { check.printResult()}, true );
 }
 
 Numeric.prototype.validate = function(number) {
-  var number = document.getElementById("number");
   var regex = /((^(\-|\+)?\d+)|(^(\-|\+)?\d+)$.(\d+))$/;
 	var answer = regex.test(number.value);
 	return answer;
 }
 
-Numeric.prototype.checkButton = function() {
-  var result = document.getElementById("result");
+Numeric.prototype.printResult = function() {
   match = this.validate(number);
   result.value = match;
   if(!match) {
@@ -17,7 +19,5 @@ Numeric.prototype.checkButton = function() {
   }
 }
 
-var submit = document.getElementById("submit");
-submit.addEventListener("click", function() { check.checkButton()}, true );
 var check = new Numeric();
 

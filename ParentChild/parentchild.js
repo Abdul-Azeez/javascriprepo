@@ -1,16 +1,17 @@
-  function Parent1() {
+  function GroupSelection() {
   }
 
-  Parent1.prototype.parentTick= function(box)
+ GroupSelection.prototype.parentTick= function(box)
   { 
-    var boxs ="." + box + "Tick";
-    var elements = document.querySelector(boxs);
+    var boxs = box + "Tick";
+    var elements = document.getElementById(boxs);
+    console.log(elements);
     var tChid = document.getElementById(box+'All');
     if(tChid.checked)
     {
       var number = Number (10)
       elements.style.display = 'block';
-      document.getElementById("Container").scrollTop = document.getElementById(box+"Container").offsetTop - 10;
+      tChid.scrollIntoView(true);
     }
     else
     {
@@ -22,4 +23,4 @@
     }  
   }
 
-  var child1 = new Parent1();
+  var groupSelection1 = new GroupSelection();

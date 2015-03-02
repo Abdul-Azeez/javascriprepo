@@ -1,4 +1,8 @@
 function ToggleCheck() {
+var checkAllButton = document.getElementById("button");
+var checkNoneButton = document.getElementById("button1");
+checkAllButton.addEventListener("click",function(){ setOfToggleChecks.checkBoxHandler('myForm','myCheckbox', true)})
+checkNoneButton.addEventListener("click", function() { setOfToggleChecks.checkBoxHandler('myForm','myCheckbox', false)})
 
 }
 
@@ -13,19 +17,15 @@ ToggleCheck.prototype.checkBoxHandler = function(FormName, FieldName, CheckValue
   }
 }
 ToggleCheck.prototype.checkFormName = function(FormName) {
-    if (!document.forms[FormName]) {
+  if (!document.forms[FormName]) {
     return;
   } 
 } 
 ToggleCheck.prototype.checkFormElementName = function(FieldName) {
-    if (!checkBoxElements) {
+  if (!checkBoxElements) {
     return;
   }
 }
 
 
 var setOfToggleChecks = new ToggleCheck();
-var button = document.getElementById("button");
-var button1 = document.getElementById("button1");
-button.addEventListener("click",function(){ setOfToggleChecks.checkBoxHandler('myForm','myCheckbox', true)})
-button1.addEventListener("click", function() { setOfToggleChecks.checkBoxHandler('myForm','myCheckbox', false)})

@@ -2,7 +2,8 @@ function Numeric() {
   var number = document.getElementById("number");
   var submit = document.getElementById("submit");
   var result = document.getElementById("result");
-  submit.addEventListener("click", function() { check.printResult()}, true );
+  var numericform = document.getElementById("numbertest")
+  numericform.addEventListener("submit", function() { check.printResult()}, true );
 }
 
 Numeric.prototype.validate = function(number) {
@@ -18,6 +19,5 @@ Numeric.prototype.printResult = function() {
     return false;
   }
 }
-
 var check = new Numeric();
 

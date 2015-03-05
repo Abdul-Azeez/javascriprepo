@@ -8,7 +8,6 @@
     var selectedGroup = document.getElementById(box+'All');
     if(selectedGroup.checked)
     {
-      var number = Number (10)
       elements.style.display = 'block';
       selectedGroup.scrollIntoView(true);
     }

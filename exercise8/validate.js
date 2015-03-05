@@ -1,6 +1,8 @@
 function Form() {
   var formbox = document.getElementById("formbox");
-  formbox.addEventListener("submit", function() { form1.validateAll()}, true );
+  formbox.addEventListener("submit", function() { 
+    form1.validateAll();
+  });
 }
 
 Form.prototype.validateLenght = function (lenght1) {
@@ -11,38 +13,28 @@ Form.prototype.validateLenght = function (lenght1) {
 }
 
 Form.prototype.validateAll = function(elements) {
-  var elements = document.forms.elements;
-  for (var i = 0; i < elements.length - 1; i++) { 
-    if (forms.elements[i].value == "" || forms.elements[i].value== null) {
-      if(forms.elements[i].id !== "timezone" && forms.elements[i].id !== "notify") {
-        alert(forms.elements[i].id+ "  can't be empty");
-        break;
-      }  
-      if (forms.elements[i].id == "notify") {
-        this.validateCheckbox();
-        break;
-      }
-      if (forms.elements[i].id == "aboutme") {
-        this.validateAboutme();
-        break;
-      }
-    }
+  if (document.forms.loginid.value == "") {
+    alert("login Id can't be empty")
+    event.preventDefault();
+  } else if(document.forms.email.value == "") {
+    alert("Email can't be empty")
+    event.preventDefault();
+  } else if(document.forms.name.value == "") {
+    alert("Name can't be empty")
+    event.preventDefault();
+  } else if (document.forms.homepage.value == ""){
+    alert("Homepage can't be empty")
+    event.preventDefault();
+  } else if (document.forms.aboutme.value == "") {
+    alert("Please check your aboutme filed")
+    event.preventDefault();
+  } else if ((document.forms.aboutme.value).length < 50 ) {
+    alert("Please the string lenght of the aboutme field must be longer than 50 characters..")
+    event.preventDefault();
+  } else if (document.getElementById("notify").checked == false ) {
+    alert("Please check the notify field")
+    event.preventDefault();
   }
-}
-
-Form.prototype.validateCheckbox = function() {
-  var notify = document.getElementById("notify")
-  if (notify.checked==false ) {
-    alert("Please click the checkbox")
-  }
-}
-
-Form.prototype.validateAboutme = function() {
-  var aboutme = document.getElementById("aboutme");
-  this.validateLenght("aboutme");
 }
 
 var form1 = new Form()
-
-
-// form1.print()

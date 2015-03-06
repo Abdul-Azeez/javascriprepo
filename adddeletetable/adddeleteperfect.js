@@ -1,5 +1,6 @@
 function Table() {
 }
+
 Table.prototype.addRow = function() {
   var tabObj = document.getElementById('tableView');
   var lastRow = tabObj.rows.length;
@@ -20,76 +21,40 @@ Table.prototype.addRow = function() {
   cell3.innerHTML = "<span id='editSave"+lastRow+"'><span class='pointer' ><button id='save"+lastRow+"' onclick='Table1.saveRow("+lastRow+");' >Save</button></span></span> / <span class='pointer'><button id='deleteRow"+lastRow+"'  onclick='Table1.deleteRow("+lastRow+");'>Delete</button></span>";
   return lastRow;
 }
+
 Table.prototype.saveRow= function(num) {
-  if (this.saveValue(num)) {
-    console.log(document.getElementById("editSave"+num))
-    document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='edit"+num+"' onclick='Table1.editRow("+num+");'>Edit</button></span>";
-  }
+
+this.getNameValue(num);
+this.getEmailValue(num);
+document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='edit"+num+"' onclick='Table1.editRow("+num+");'>Edit</button></span>";
 }
+
 Table.prototype.getNameValue = function(num) {
   var nameNode = document.getElementById('name'+num);
-  console.log(nameNode);
   var nameParent = nameNode.parentNode;
+  console.log(nameParent)
   var namevalue = nameNode.value;
-  var emailNode = document.getElementById('email'+num);
-  var emailParent = emailNode.parentNode;
-  var emailValue = emailNode.value;
-  return {
-    nameNode: nameNode,
-    nameParent: nameParent,
-    namevalue: namevalue,
-    emailNode: emailNode,
-    emailParent: emailParent,
-    emailValue : emailValue,
-  }
-}
-Table.prototype.saveValue = function(num) {
-  values = this.getNameValue(num);
-  console.log(values);
-  if ((values.namevalue )&& (values.emailValue)!="") {
-    if (this.validateemail(values.emailValue)) {
-    values.nameParent.removeChild(values.nameNode);
-    var textName = document.createElement('span');
-    textName.id = "name"+num;
-    textName.innerHTML = values.namevalue;
-    values.nameParent.appendChild(textName);
-    values.emailParent.removeChild(values.emailNode);
-    var emailName = document.createElement('span');
-    emailName.id = "email"+num;
-    emailName.innerHTML = values.emailValue;
-    values.emailParent.appendChild(emailName);
-    return true;
-    }
-  } else {
-    alert(" The input can't be empty")
-  }
-
+  nameParent.removeChild(nameNode);
+  var textName = document.createElement('span');
+  textName.id = "name"+num;
+  textName.innerHTML = namevalue;
+  nameParent.appendChild(textName);
+  return namevalue;
 }
 
 Table.prototype.getEmailValue = function(num) {
   var emailNode = document.getElementById('email'+num);
-  namevalue = this.getNameValue;
+   console.log(emailNode);
   var emailParent = emailNode.parentNode;
   var emailValue = emailNode.value;
-  if ((emailValue && emailNode && namevalue)!= "" && this.validateemail(emailValue)){
-    emailParent.removeChild(emailNode);
-    var emailName = document.createElement('span');
-    emailName.id = "email"+num;
-    emailName.innerHTML = emailValue;
-    emailParent.appendChild(emailName);
-    return emailValue;
-  }
+  console.log(emailValue);
+  emailParent.removeChild(emailNode);
+  var emailName = document.createElement('span');
+  emailName.id = "email"+num;
+  emailName.innerHTML = emailValue;
+  emailParent.appendChild(emailName);
   return emailValue;
-}
 
-Table.prototype.validateemail = function(email) {
-  var regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/
-  var match = regex.test(email);
-  if (match == false) {
-      alert("Please use proper email")
-  } else {
-    return true;
-  }  
 }
 
 Table.prototype.editRow= function(num) {

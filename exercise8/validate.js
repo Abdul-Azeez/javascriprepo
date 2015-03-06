@@ -1,17 +1,15 @@
 function Form() {
   var formbox = document.getElementById("formbox");
-  formbox.addEventListener("submit", function() { 
+  formbox.addEventListener("submit", function() {   
     form1.validateAll();
   });
 }
-
 Form.prototype.validateLenght = function (lenght1) {
   this.lenght1 = lenght1;
   if ((lenght1.length) < 50) {
     alert("String lenght of the aboutme field must not be less than 50.")
   }
 }
-
 Form.prototype.validateAll = function(elements) {
   if (document.forms.loginid.value == "") {
     alert("login Id can't be empty")
@@ -36,5 +34,4 @@ Form.prototype.validateAll = function(elements) {
     event.preventDefault();
   }
 }
-
 var form1 = new Form()

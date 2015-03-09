@@ -29,7 +29,6 @@ Table.prototype.addCell = function() {
 }
 Table.prototype.saveRow= function(num) {
   if (this.saveValue(num)) {
-    console.log(document.getElementById("editSave"+num))
     document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='edit"+num+"' onclick='Table1.editRow("+num+");'>Edit</button></span>";
   }
 }
@@ -72,22 +71,6 @@ Table.prototype.saveValue = function(num) {
 
 }
 
-Table.prototype.getEmailValue = function(num) {
-  var emailNode = document.getElementById('email'+num);
-  // namevalue = this.getName;
-  var emailParent = emailNode.parentNode;
-  var emailValue = emailNode.value;
-  if ((emailValue && emailNode && namevalue)!= "" && this.validateemail(emailValue)){
-    emailParent.removeChild(emailNode);
-    var emailName = document.createElement('span');
-    emailName.id = "email"+num;
-    emailName.innerHTML = emailValue;
-    emailParent.appendChild(emailName);
-    return emailValue;
-  }
-  return emailValue;
-}
-
 Table.prototype.validateemail = function(email) {
   var regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/
   var match = regex.test(email);
@@ -120,7 +103,6 @@ Table.prototype.editRow= function(num) {
 Table.prototype.deleteRow =function(num) {
   var rowObj = document.getElementById('row'+num);
   rowObj.parentNode.removeChild(rowObj); 
-  // console.log(rowObj);
 }
 var Table1 = new Table();
 var addRow = document.getElementById("addRow");

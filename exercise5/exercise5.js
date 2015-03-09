@@ -11,19 +11,19 @@ User.prototype.validate = function(input) {
 }
 
 User.prototype.print = function () {
-  for (var i = 0; i<this.names.length; i++) {
+  for (var i = 0; i < this.names.length; i++) {
     do {
       var input = prompt('Enter your ' + this.names[i]);
     }
     while (this.validate(input));
     if (input == null) {
-      alert(this.names[i]+ " can't be empty")
+      alert(this.names[i] + " can't be empty")
       break;
     }
-      this[this.names[i]] = input;
-      if (this.firstname && this.lastname) {
-        document.getElementById("demo").innerHTML =
-        "Hello " + this.firstname +" "+ this.lastname;
+    this[this.names[i]] = input;
+    if (this.firstname && this.lastname) {
+      document.getElementById("demo").innerHTML =
+      "Hello " + this.firstname + " " + this.lastname;
       }
   }
 }

@@ -2,8 +2,8 @@ function Form() {
   var formbox = document.getElementById("formbox");
   formbox.addEventListener("submit", function() { 
     form1.validateAll();
-    form1.validateEmail();
-    form1.validateUrl();
+    // form1.validateEmail();
+    // form1.validateUrl();
   });
 }
 
@@ -26,10 +26,10 @@ Form.prototype.validateUrl = function(homepage) {
 }
 
 Form.prototype.validateAll = function(elements) {
- var email = document.getElementById("email");
+var email = document.getElementById("email");
 var url = document.getElementById("homepage");
   if (document.forms.loginid.value == "") {
-    alert("login Id can't be empty")
+    alert("login Id can't be empty")  
     event.preventDefault();
   } else if(document.forms.email.value == "") {
     alert("Email can't be empty")
@@ -49,8 +49,11 @@ var url = document.getElementById("homepage");
   } else if (document.getElementById("notify").checked == false ) {
     alert("Please check the notify field")
     event.preventDefault();
-  } 
-
+  } else if (document.forms.email.value != "") {
+    this.validateEmail(email)
+  } else if (document.forms.homepage.value = "") {
+    this.validateUrl(url);
+  }
   // return true;
 }
 var form1 = new Form()

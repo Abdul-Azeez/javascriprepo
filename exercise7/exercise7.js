@@ -15,9 +15,7 @@ Numeric.prototype.validate = function(number) {
 Numeric.prototype.printResult = function() {
   match = this.validate(number);
   result.value = match;
-  if(!match) {
-    return false;
-  }
+  return match;
 }
-var check = new Numeric();
+  var check = new Numeric();
 

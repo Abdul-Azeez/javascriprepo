@@ -4,21 +4,28 @@ Table.prototype.addRow = function() {
   var tabObj = document.getElementById('tableView');
   var lastRow = tabObj.rows.length;
   var rowObj = tabObj.insertRow(lastRow);
-  rowObj.id = "row"+rowObj;
-  var cell1 = rowObj.insertCell(0);
+  return { lastRow: lastRow,
+            rowObj: rowObj,
+  }
+
+}
+Table.prototype.addCell = function() {
+  tableObj = this.addRow();
+  tableObj.rowObj.id = "row"+tableObj.rowObj;
+  var cell1 = tableObj.rowObj.insertCell(0);
   var textName = document.createElement('input');
   textName.type = 'text';
-  textName.id = "name"+lastRow;
+  textName.id = "name"+tableObj.lastRow;
   cell1.appendChild(textName);
-  var cell2 = rowObj.insertCell(1);
+  var cell2 = tableObj.rowObj.insertCell(1);
   var textEmail = document.createElement('input');
   textEmail.type = 'text';
-  textEmail.id = "email"+ lastRow;
-  rowObj.id = 'row'+lastRow;
+  textEmail.id = "email"+ tableObj.lastRow
+  tableObj.rowObj.id = 'row'+tableObj.lastRow;
   cell2.appendChild(textEmail);
-  var cell3 = rowObj.insertCell(2);
-  cell3.innerHTML = "<span id='editSave"+lastRow+"'><span class='pointer' ><button id='save"+lastRow+"' onclick='Table1.saveRow("+lastRow+");' >Save</button></span></span> / <span class='pointer'><button id='deleteRow"+lastRow+"'  onclick='Table1.deleteRow("+lastRow+");'>Delete</button></span>";
-  return lastRow;
+  var cell3 = tableObj.rowObj.insertCell(2);
+  cell3.innerHTML = "<span id='editSave"+tableObj.lastRow+"'><span class='pointer' ><button id='save"+tableObj.lastRow+"' onclick='Table1.saveRow("+tableObj.lastRow+");' >Save</button></span></span> / <span class='pointer'><button id='deleteRow"+tableObj.lastRow+"'  onclick='Table1.deleteRow("+tableObj.lastRow+");'>Delete</button></span>";
+
 }
 Table.prototype.saveRow= function(num) {
   if (this.saveValue(num)) {
@@ -26,9 +33,9 @@ Table.prototype.saveRow= function(num) {
     document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='edit"+num+"' onclick='Table1.editRow("+num+");'>Edit</button></span>";
   }
 }
-Table.prototype.getNameValue = function(num) {
+Table.prototype.getName = function(num) {
   var nameNode = document.getElementById('name'+num);
-  console.log(nameNode);
+  // console.log(nameNode);
   var nameParent = nameNode.parentNode;
   var namevalue = nameNode.value;
   var emailNode = document.getElementById('email'+num);
@@ -44,8 +51,7 @@ Table.prototype.getNameValue = function(num) {
   }
 }
 Table.prototype.saveValue = function(num) {
-  values = this.getNameValue(num);
-  console.log(values);
+  values = this.getName(num);
   if ((values.namevalue )&& (values.emailValue)!="") {
     if (this.validateemail(values.emailValue)) {
     values.nameParent.removeChild(values.nameNode);
@@ -68,7 +74,7 @@ Table.prototype.saveValue = function(num) {
 
 Table.prototype.getEmailValue = function(num) {
   var emailNode = document.getElementById('email'+num);
-  namevalue = this.getNameValue;
+  // namevalue = this.getName;
   var emailParent = emailNode.parentNode;
   var emailValue = emailNode.value;
   if ((emailValue && emailNode && namevalue)!= "" && this.validateemail(emailValue)){
@@ -93,34 +99,29 @@ Table.prototype.validateemail = function(email) {
 }
 
 Table.prototype.editRow= function(num) {
-  var nameNode = document.getElementById('name'+num);
-  var nameParent = nameNode.parentNode;
-  var namevalue = nameNode.innerHTML;
-  nameParent.removeChild(nameNode);
-  console.log(nameParent);
+  nameValue= this.getName(num);
+  namevalue = (nameValue.nameNode).innerHTML;
+  nameValue.nameParent.removeChild(nameValue.nameNode);
   var textName = document.createElement('input');
   textName.type = 'text';
   textName.id = "name"+num;
   textName.value = namevalue;
-  nameParent.appendChild(textName);
-  var emailNode = document.getElementById('email'+num);
-  var emailParent = emailNode.parentNode;
-  var emailValue = emailNode.innerHTML;
-  console.log(emailParent);
-  emailParent.removeChild(emailNode);
+  nameValue.nameParent.appendChild(textName);
+  var emailValue = (nameValue.emailNode).innerHTML;
+  nameValue.emailParent.removeChild(nameValue.emailNode);
   var textEmail = document.createElement('input');
   textEmail.type = 'text';
   textEmail.id = "email"+num;
   textEmail.value = emailValue;
-  emailParent.appendChild(textEmail);
+  nameValue.emailParent.appendChild(textEmail);
   document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='save"+num+"' onclick='Table1.saveRow("+num+");'> Save </button></span>";
 }
 
 Table.prototype.deleteRow =function(num) {
   var rowObj = document.getElementById('row'+num);
   rowObj.parentNode.removeChild(rowObj); 
-  console.log(rowObj);
+  // console.log(rowObj);
 }
 var Table1 = new Table();
 var addRow = document.getElementById("addRow");
-addRow.addEventListener('click', function(){ Table1.addRow();})
+addRow.addEventListener('click', function(){ Table1.addCell();})

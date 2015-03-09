@@ -20,13 +20,11 @@ User.prototype.print = function () {
       alert(this.names[i]+ " can't be empty")
       break;
     }
-    if (!this.validate(input)) {
       this[this.names[i]] = input;
       if (this.firstname && this.lastname) {
         document.getElementById("demo").innerHTML =
         "Hello " + this.firstname +" "+ this.lastname;
       }
-    }
   }
 }
 

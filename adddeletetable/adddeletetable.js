@@ -7,19 +7,23 @@ Table.prototype.addRow = function() {
   return { lastRow: lastRow,
             rowObj: rowObj,
   }
-
 }
+
+Table.prototype.createText = function() {
+  var textName = document.createElement('input');
+  textName.type = 'text';
+  return textName;
+}
+
 Table.prototype.addCell = function() {
   tableObj = this.addRow();
   tableObj.rowObj.id = "row"+tableObj.rowObj;
   var cell1 = tableObj.rowObj.insertCell(0);
-  var textName = document.createElement('input');
-  textName.type = 'text';
+  textName = this.createText();
   textName.id = "name"+tableObj.lastRow;
   cell1.appendChild(textName);
   var cell2 = tableObj.rowObj.insertCell(1);
-  var textEmail = document.createElement('input');
-  textEmail.type = 'text';
+  textEmail = this.createText();
   textEmail.id = "email"+ tableObj.lastRow
   tableObj.rowObj.id = 'row'+tableObj.lastRow;
   cell2.appendChild(textEmail);
@@ -34,7 +38,6 @@ Table.prototype.saveRow= function(num) {
 }
 Table.prototype.getName = function(num) {
   var nameNode = document.getElementById('name'+num);
-  // console.log(nameNode);
   var nameParent = nameNode.parentNode;
   var namevalue = nameNode.value;
   var emailNode = document.getElementById('email'+num);
@@ -68,7 +71,6 @@ Table.prototype.saveValue = function(num) {
   } else {
     alert(" The input can't be empty")
   }
-
 }
 
 Table.prototype.validateemail = function(email) {
@@ -85,15 +87,13 @@ Table.prototype.editRow= function(num) {
   nameValue= this.getName(num);
   namevalue = (nameValue.nameNode).innerHTML;
   nameValue.nameParent.removeChild(nameValue.nameNode);
-  var textName = document.createElement('input');
-  textName.type = 'text';
+  textName = this.createText();
   textName.id = "name"+num;
   textName.value = namevalue;
   nameValue.nameParent.appendChild(textName);
   var emailValue = (nameValue.emailNode).innerHTML;
   nameValue.emailParent.removeChild(nameValue.emailNode);
-  var textEmail = document.createElement('input');
-  textEmail.type = 'text';
+  textEmail= this.createText()
   textEmail.id = "email"+num;
   textEmail.value = emailValue;
   nameValue.emailParent.appendChild(textEmail);

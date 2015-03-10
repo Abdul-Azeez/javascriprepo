@@ -1,5 +1,5 @@
-function CheckBox(checkBoxes, noneCheckbox ) {
-  this.maxDays = 3;
+function CheckBox(checkBoxes, noneCheckbox, maxDays ) {
+  this.maxDays = maxDays;
   this.selectedDays = [];
   this.checkBoxes = checkBoxes;
   this.noneCheckbox = noneCheckbox;
@@ -56,7 +56,7 @@ CheckBox.prototype.checkAll = function() {
 document.addEventListener('DOMContentLoaded', function(){
   var checkBoxes = document.getElementsByName('myCheckbox');
   var noneCheckbox = document.getElementById('none');
-  var checkBox1 = new CheckBox(checkBoxes, noneCheckbox);
+  var checkBox1 = new CheckBox(checkBoxes, noneCheckbox,3);
   checkBox1.addEventHandlers();
   checkBox1.initialze();
 });

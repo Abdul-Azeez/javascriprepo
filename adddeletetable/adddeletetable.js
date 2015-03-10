@@ -52,20 +52,13 @@ Table.prototype.getName = function(num) {
     emailValue : emailValue,
   }
 }
+
 Table.prototype.saveValue = function(num) {
   values = this.getName(num);
   if ((values.namevalue )&& (values.emailValue)!="") {
     if (this.validateemail(values.emailValue)) {
-    values.nameParent.removeChild(values.nameNode);
-    var textName = document.createElement('span');
-    textName.id = "name"+num;
-    textName.innerHTML = values.namevalue;
-    values.nameParent.appendChild(textName);
-    values.emailParent.removeChild(values.emailNode);
-    var emailName = document.createElement('span');
-    emailName.id = "email"+num;
-    emailName.innerHTML = values.emailValue;
-    values.emailParent.appendChild(emailName);
+    this.saveNode("name", num);
+    this.saveNode("email", num);
     return true;
     }
   } else {
@@ -84,20 +77,33 @@ Table.prototype.validateemail = function(email) {
 }
 
 Table.prototype.editRow= function(num) {
-  nameValue= this.getName(num);
-  namevalue = (nameValue.nameNode).innerHTML;
-  nameValue.nameParent.removeChild(nameValue.nameNode);
-  textName = this.createText();
-  textName.id = "name"+num;
-  textName.value = namevalue;
-  nameValue.nameParent.appendChild(textName);
-  var emailValue = (nameValue.emailNode).innerHTML;
-  nameValue.emailParent.removeChild(nameValue.emailNode);
-  textEmail= this.createText()
-  textEmail.id = "email"+num;
-  textEmail.value = emailValue;
-  nameValue.emailParent.appendChild(textEmail);
+  this.createNode('name', num)
+  this.createNode('email', num)
   document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='save"+num+"' onclick='Table1.saveRow("+num+");'> Save </button></span>";
+}
+
+
+Table.prototype.createNode = function(type, num) {
+  var node = document.getElementById(type + num);
+  var parent = node.parentNode;
+  var value = node.innerHTML;
+  parent.removeChild(node);
+  var input_field = document.createElement('input');
+  input_field.type = 'text';
+  input_field.id = type + num;
+  input_field.value = value;
+  parent.appendChild(input_field);
+}
+Table.prototype.saveNode = function(type, num) {
+  var node = document.getElementById(type + num);
+  var parent = node.parentNode;
+  var value = node.value;
+  parent.removeChild(node);
+  var input_field = document.createElement('span');
+  input_field.type = 'text';
+  input_field.id = type + num;
+  input_field.innerHTML = value;
+  parent.appendChild(input_field);
 }
 
 Table.prototype.deleteRow =function(num) {

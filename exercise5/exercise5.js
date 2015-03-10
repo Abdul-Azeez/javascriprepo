@@ -14,8 +14,7 @@ User.prototype.print = function () {
   for (var i = 0; i<this.names.length; i++) {
     do {
       var input = prompt('Enter your ' + this.names[i]);
-    }
-    while (this.validate(input));
+    } while (this.validate(input));
     if (input == null) {
       break;
     }

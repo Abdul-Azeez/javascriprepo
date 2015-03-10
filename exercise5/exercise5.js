@@ -3,9 +3,10 @@ function User(names) {
 }
 
 User.prototype.validate = function(input) {
-  if (input !=null && input.trim() =="") {
-      alert("This field can't be empty");
-      return true;
+  for (var i = 0; i<this.names.length; i++) 
+    if (input !=null && input.trim() =="") {
+        alert(this.names[i] + " can't be empty");
+        return true;
   } 
 }
 

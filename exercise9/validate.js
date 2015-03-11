@@ -1,18 +1,85 @@
-function Form() { 
+function Form() {
   var formbox = document.getElementById("formbox");
-  formbox.addEventListener("submit", function() { 
-    form1.validateAll();
-    // form1.validateEmail();
-    // form1.validateUrl();
-  });
+  formbox.addEventListener("submit", function() { form1.validateAll()
+     form1.validateEmail(), form1.validateUrl() });
 }
 
+
+Form.prototype.validateAll = function() {
+  var elements = document.querySelectorAll('input[type=text]');
+  var aboutme = document.getElementById('aboutme')
+  var notify = document.getElementById('notify');
+  var number = elements.length;
+  returnval = true;
+  for (var i = 0; i < elements.length; ) {
+    if (elements[i].value == "") {
+      alert(elements[i].id + " can't be empty");
+      event.preventDefault();
+      returnval = false;
+      break; 
+    } else {
+      returnval = true;
+      i++
+    }
+  }
+
+  if (returnval) {
+    if (this.validateAboutme()) {     
+      returnval = true;
+    } else {
+      event.preventDefault();
+      returnval = false;
+    }
+  }
+
+  if (returnval ) {
+    if (this.validateCheckbox()) {
+      returnval = true;
+    } else {
+      event.preventDefault();
+      returnval = false;
+    }
+  }
+  return returnval;
+}
+
+
+Form.prototype.validateCheckbox = function() {
+  var notify = document.getElementById("notify")
+  if (notify.checked==false ) {
+    alert("Please click the checkbox");
+    return false;
+  } else {
+  return true;
+  }
+}
+
+Form.prototype.validateAboutme = function() {
+  var aboutme = document.getElementById("aboutme");
+  if (aboutme.value == "" || aboutme.value == null) {
+    alert("The About me cannot be empty");
+    event.preventDefault();
+    return false;
+  }
+  else if (aboutme.value != "" && aboutme.value.length < 50) {
+    alert("String lenght must be greater than 50");
+    event.preventDefault()
+    return false;
+  }
+  else {
+    return true;
+  };
+}
 Form.prototype.validateEmail = function(email) {
   var email = document.getElementById("email")
   var regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/
   var match = regex.test(email.value);
   if (match == false && email.value != "" ) {
       alert("Please use the proper email format")
+      event.preventDefault()
+      return false;
+  } else {
+    return true;
   }
 }
 
@@ -22,38 +89,10 @@ Form.prototype.validateUrl = function(homepage) {
   var match = regex.test(url.value);
   if (match==false && url.value != "" ) {
     alert("Please use proper Url format")
+    event.preventDefault()
+    return false;
+  } else {
+    return true;
   }
-}
-
-Form.prototype.validateAll = function(elements) {
-var email = document.getElementById("email");
-var url = document.getElementById("homepage");
-  if (document.forms.loginid.value == "") {
-    alert("login Id can't be empty")  
-    event.preventDefault();
-  } else if(document.forms.email.value == "") {
-    alert("Email can't be empty")
-    event.preventDefault();
-  } else if(document.forms.name.value == "") {
-    alert("Name can't be empty")
-    event.preventDefault();
-  } else if (document.forms.homepage.value == ""){
-    alert("Homepage can't be empty")
-    event.preventDefault();
-  } else if (document.forms.aboutme.value == "") {
-    alert("Please check your aboutme filed")
-    event.preventDefault();
-  } else if ((document.forms.aboutme.value).length < 50 ) {
-    alert("Please the string lenght of the aboutme field must be longer than 50 characters..")
-    event.preventDefault();
-  } else if (document.getElementById("notify").checked == false ) {
-    alert("Please check the notify field")
-    event.preventDefault();
-  } else if (document.forms.email.value != "") {
-    this.validateEmail(email)
-  } else if (document.forms.homepage.value = "") {
-    this.validateUrl(url);
-  }
-  // return true;
 }
 var form1 = new Form()

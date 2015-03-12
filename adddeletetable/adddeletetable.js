@@ -17,7 +17,8 @@ Table.prototype.createText = function() {
 
 Table.prototype.addCell = function() {
   tableObj = this.addRow();
-  tableObj.rowObj.id = "row"+tableObj.rowObj;
+  tableObj.rowObj.id = "row"+tableObj.lastRow;
+  console.log(tableObj.rowObj.id);
   this.createCells( 0,"name");
   this.createCells(1, "email");
   var cell3 = tableObj.rowObj.insertCell(2);

@@ -71,34 +71,9 @@ Table.prototype.validateemail = function(email) {
 }
 
 Table.prototype.editRow= function(num) {
-  // this.swapUIElements('edit','name', num)
-  // this.swapUIElements('edit','email', num)
   this.editNode('name', num);
   this.editNode('email', num)
   document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='save"+num+"' onclick='Table1.saveRow("+num+");'> Save </button></span>";
-}
-
-Table.prototype.swapUIElements = function(operation, type, num) {
-  var node = document.getElementById(type + num);
-  var parent = node.parentNode;
-  
-  if(operation == "edit") {
-    var value = node.innerHTML;
-    parent.removeChild(node);
-    var input_field = document.createElement('input');
-    input_field.type = 'text';
-    input_field.id = type + num;
-    input_field.value = value;
-    parent.appendChild(input_field);
-  } else {
-    var value = node.value;
-    parent.removeChild(node);
-    var input_field = document.createElement('span');
-    input_field.type = 'text';
-    input_field.id = type + num;
-    input_field.innerHTML = value;
-    parent.appendChild(input_field);
-  }
 }
 
 Table.prototype.editNode = function(type, num) {

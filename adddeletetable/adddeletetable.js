@@ -34,30 +34,24 @@ Table.prototype.saveRow= function(num) {
     document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='edit"+num+"' onclick='Table1.editRow("+num+");'>Edit</button></span>";
   }
 }
-Table.prototype.getName = function(num) {
+ Table.prototype.getName = function(num) {
   var nameNode = document.getElementById('name'+num);
-  console.log(nameNode);
-  var nameParent = nameNode.parentNode;
-  var namevalue = nameNode.value;
   var emailNode = document.getElementById('email'+num);
-  var emailParent = emailNode.parentNode;
-  var emailValue = emailNode.value;
   return {
     nameNode: nameNode,
-    nameParent: nameParent,
-    namevalue: namevalue,
+    nameParent: nameNode.parentNode,
+    namevalue: nameNode.value,
     emailNode: emailNode,
-    emailParent: emailParent,
-    emailValue : emailValue,
+    emailParent: emailNode.parentNode,
+    emailValue : emailNode.value,
   }
 }
-
 Table.prototype.saveValue = function(num) {
   values = this.getName(num);
   if ((values.namevalue )&& (values.emailValue)!="") {
     if (this.validateemail(values.emailValue)) {
-    this.swapUIElements('save', "name", num);
-    this.swapUIElements('save', "email", num);
+    this.saveNode( "name", num);
+    this.saveNode("email", num);
     return true;
     }
   } else {
@@ -76,8 +70,10 @@ Table.prototype.validateemail = function(email) {
 }
 
 Table.prototype.editRow= function(num) {
-  this.swapUIElements('edit','name', num)
-  this.swapUIElements('edit','email', num)
+  // this.swapUIElements('edit','name', num)
+  // this.swapUIElements('edit','email', num)
+  this.editNode('name', num);
+  this.editNode('email', num)
   document.getElementById("editSave"+num).innerHTML = "<span class='pointer' ><button id='save"+num+"' onclick='Table1.saveRow("+num+");'> Save </button></span>";
 }
 
@@ -102,6 +98,30 @@ Table.prototype.swapUIElements = function(operation, type, num) {
     input_field.innerHTML = value;
     parent.appendChild(input_field);
   }
+}
+
+Table.prototype.editNode = function(type, num) {
+  var node = document.getElementById(type + num);
+  var parent = node.parentNode;
+  var value = node.innerHTML; 
+  parent.removeChild(node);
+  var input_field = document.createElement('input');
+  input_field.type = 'text';
+  input_field.id = type + num;
+  input_field.value = value;
+  parent.appendChild(input_field);
+}
+
+Table.prototype.saveNode = function(type, num) {
+  var node = document.getElementById(type + num);
+  var parent = node.parentNode;
+  var value = node.value;
+  parent.removeChild(node);
+  var input_field = document.createElement('span');
+  input_field.type = 'text';
+  input_field.id = type + num;
+  input_field.innerHTML = value;
+  parent.appendChild(input_field);
 }
 
 Table.prototype.deleteRow =function(num) {

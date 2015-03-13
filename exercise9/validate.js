@@ -1,7 +1,8 @@
 function Form() {
   var formbox = document.getElementById("formbox");
-  formbox.addEventListener("submit", function() { form1.validateAll()
-     form1.validateEmail(), form1.validateUrl() });
+  formbox.addEventListener("submit", function() { form1.validateAll();
+     // form1.validateEmail(), form1.validateUrl() 
+   });
 }
 
 
@@ -22,24 +23,11 @@ Form.prototype.validateAll = function() {
       i++
     }
   }
+  if (returnval) { returnval= this.validateAboutme(); }
+  if (returnval) { returnval= this.validateCheckbox(); }
+  if (returnval) { returnval = this.validateEmail();}
+  if(returnval) { returnval = this.validateUrl();}
 
-  if (returnval) {
-    if (this.validateAboutme()) {     
-      returnval = true;
-    } else {
-      event.preventDefault();
-      returnval = false;
-    }
-  }
-
-  if (returnval ) {
-    if (this.validateCheckbox()) {
-      returnval = true;
-    } else {
-      event.preventDefault();
-      returnval = false;
-    }
-  }
   return returnval;
 }
 
@@ -48,6 +36,7 @@ Form.prototype.validateCheckbox = function() {
   var notify = document.getElementById("notify")
   if (notify.checked==false ) {
     alert("Please click the checkbox");
+    event.preventDefault();
     return false;
   } else {
   return true;

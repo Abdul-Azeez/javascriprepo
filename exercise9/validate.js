@@ -1,7 +1,6 @@
 function Form() {
   var formbox = document.getElementById("formbox");
   formbox.addEventListener("submit", function() { form1.validateAll();
-     // form1.validateEmail(), form1.validateUrl() 
    });
 }
 

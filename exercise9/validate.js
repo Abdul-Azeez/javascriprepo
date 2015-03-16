@@ -61,7 +61,7 @@ Form.prototype.validateAboutme = function() {
 }
 Form.prototype.validateEmail = function(email) {
   var email = document.getElementById("email")
-  var regex = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/
+  var regex= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
   var match = regex.test(email.value);
   if (match == false && email.value != "" ) {
       alert("Please use the proper email format")
@@ -74,7 +74,7 @@ Form.prototype.validateEmail = function(email) {
 
 Form.prototype.validateUrl = function(homepage) {
   var url = document.getElementById("homepage")
-  var regex = /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+  var regex = /^(?:http(?:s)?:\/\/)?(?:www\.)?(?:[\w-]*)\.\w{2,}\.\w{2,}$/
   var match = regex.test(url.value);
   if (match==false && url.value != "" ) {
     alert("Please use proper Url format")
